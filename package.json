@@ -1,0 +1,20 @@
+{
+  "name": "hkn-cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "description": "CLI tool for various tasks",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "open": "^10.1.0"
+  },
+  "bin": {
+    "hkn": "./index.js"
+  }
+}
