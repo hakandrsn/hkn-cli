@@ -6,6 +6,7 @@ import axios from 'axios';
 import {configDotenv} from "dotenv";
 import {checkNodeInstalled, installNodeJS} from "./helpers.js";
 import {installGlobalPackages} from "./install-packages.js";
+import {exec} from "child_process";
 
 configDotenv();
 
@@ -89,6 +90,29 @@ program.command('setup js')
 program.command("test").action(
     () => {
         console.log("Test edilecek bir şey yok");
+    }
+)
+
+program.command("start <app>").action(
+    (app) => {
+        switch (app) {
+            case 'api':
+                exec('npm run start:dev', { cwd: 'C:\\dev\\barbaros\\barbaros_public_api' }, (error, stdout, stderr) => {
+                    if (error) {
+                        console.error(`Hata: ${error.message}`);
+                        return;
+                    }
+                    if (stderr) {
+                        console.error(`Hata: ${stderr}`);
+                        return;
+                    }
+                    console.log(`Çıktı: ${stdout}`);
+                });
+                break;
+            default:
+                console.log(`${app} uygulaması bulunamadı.`);
+
+        }
     }
 )
 
